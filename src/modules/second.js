@@ -1,7 +1,7 @@
 const second = () => {
     const cartBtn = document.getElementById('cart');
 
-    console.log(cartBtn);
+    console.log("second");
 }
 
 export default second;
