@@ -1,0 +1,25 @@
+{
+  "name": "alimektor-glo-academy-ozon-copy-intensive",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alimektor/alimektor-glo-academy-ozon-copy-intensive.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Alimektor/alimektor-glo-academy-ozon-copy-intensive/issues"
+  },
+  "homepage": "https://github.com/Alimektor/alimektor-glo-academy-ozon-copy-intensive#readme",
+  "devDependencies": {
+    "webpack": "^5.102.1",
+    "webpack-cli": "^6.0.1"
+  }
+}
