@@ -25,5 +25,8 @@
     "babel-loader": "^10.0.0",
     "webpack": "^5.102.1",
     "webpack-cli": "^6.0.1"
+  },
+  "dependencies": {
+    "json-server": "^1.0.0-beta.3"
   }
 }
