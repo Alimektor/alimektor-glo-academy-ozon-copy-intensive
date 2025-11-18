@@ -1,28 +1,40 @@
 import renderGoods from "./renderGoods.js";
 import getData from "./getData.js";
 import {
-    priceFilter
+    priceFilter,
+    hotSaleFilter
 } from "./filters.js";
 
 const filter = () => {
     const minPriceInput = document.querySelector('#min.filter-price_input');
     const maxPriceInput = document.querySelector('#max.filter-price_input');
+    const checkboxInput = document.getElementById('discount-checkbox');
+    const checkboxSpan = document.querySelector('.filter-check_checkmark');
 
-    function priceRender() {
+    function renderFiltered() {
         getData().then(data => {
             const minPrice = minPriceInput.value;
             const maxPrice = maxPriceInput.value;
-            const filteredData = priceFilter(data, minPrice, maxPrice);
+            const filteredByHotSale = hotSaleFilter(data, checkboxInput.checked);
+            const filteredData = priceFilter(filteredByHotSale, minPrice, maxPrice);
             renderGoods(filteredData);
         });
     }
 
     minPriceInput.addEventListener('input', () => {
-        priceRender();
+        renderFiltered();
     });
     maxPriceInput.addEventListener('input', () => {
-        priceRender();
+        renderFiltered();
     });
+    checkboxInput.addEventListener('change', () => {
+        if (checkboxInput.checked) {
+            checkboxSpan.classList.add('checked');
+        } else {
+            checkboxSpan.classList.remove('checked');
+        }
+        renderFiltered();
+    })
 }
 
 export default filter;

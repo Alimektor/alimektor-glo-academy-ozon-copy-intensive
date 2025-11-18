@@ -8,9 +8,13 @@ export const categoryFilter = (goods, value) => {
 
 export const priceFilter = (goods, minValue, maxValue) => {
     const minPrice = Number(minValue) || 0;
-    const maxPrice = Number(maxValue) || 0;
+    const maxPrice = Number(maxValue) || +Infinity;
     return goods.filter(goodItem => {
         const itemPrice = Number(goodItem.price);
         return itemPrice >= minPrice && itemPrice <= maxPrice;
     });
+}
+
+export const hotSaleFilter = (goods, value) => {
+    return goods.filter(goodItem => (value) ? goodItem.sale === true : goodItem.sale === false);
 }
