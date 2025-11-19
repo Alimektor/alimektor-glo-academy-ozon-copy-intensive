@@ -1,13 +1,18 @@
-const renderGoods = (goods) => {
-    const goodsWrapper = document.querySelector('.goods');
-
-    localStorage.setItem('goods', JSON.stringify(goods));
+const renderCart = (goods) => {
+    const goodsWrapper = document.querySelector('.cart-wrapper');
 
     goodsWrapper.innerHTML = '';
 
+    if (goods.length === 0) {
+        goodsWrapper.insertAdjacentHTML('beforeend', `
+                <div id="cart-empty">
+                    Ваша корзина пока пуста
+                </div>
+        `);
+    }
+
     goods.forEach(goodsItem => {
         goodsWrapper.insertAdjacentHTML('beforeend', `
-                            <div class="col-12 col-md-6 col-lg-4 col-xl-3">
                                 <div class="card" data-key="${goodsItem.id}">
                                     ${goodsItem.sale ? '<span class="card-sale">SALE</span>' : ''}
                                     <div class="card-img-wrapper">
@@ -17,12 +22,11 @@ const renderGoods = (goods) => {
                                     <div class="card-body justify-content-between">
                                         <div class="card-price">${goodsItem.price} ₽</div>
                                         <h5 class="card-title">${goodsItem.title}</h5>
-                                        <button class="btn btn-primary">В корзину</button>
+                                        <button class="btn btn-primary">Удалить</button>
                                     </div>
                                 </div>
-                            </div>
         `);
     });
 }
 
-export default renderGoods;
+export default renderCart;
