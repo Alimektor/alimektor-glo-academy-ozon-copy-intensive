@@ -33,11 +33,11 @@ export default function RootLayout({
             </head>
             <body className={fontGTEestiProText.className}>
                 <Header />
+                <main>
+                    {children}
+                </main>
+                <Cart />
             </body>
-            <main>
-                {children}
-            </main>
-            <Cart />
         </html >
     )
 }
