@@ -31,7 +31,7 @@ export default function RootLayout({
                     crossOrigin='anonymous'
                 ></link>
             </head>
-            <body className={fontGTEestiProText.className}>{children}
+            <body className={fontGTEestiProText.className}>
                 <Header />
             </body>
             <main>

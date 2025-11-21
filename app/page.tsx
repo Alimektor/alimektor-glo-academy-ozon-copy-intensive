@@ -1,4 +1,9 @@
-export default function Home() {
+import Product from './models/product.module';
+
+export default async function Home() {
+    const response = await fetch('https://test-c7ae2-default-rtdb.europe-west1.firebasedatabase.app/goods.json');
+    const data = await response.json();
+    console.log(data);
     return (
         <>
             <div className='container'>
@@ -43,10 +48,30 @@ export default function Home() {
                     <div className='col-12 col-lg-9 col-xl-10'>
                         <div className='container'>
                             <div className='row no-gutters goods'></div>
+                            {data.map((goodsItem: Product) => {
+                                return (
+                                    <div className="col-12 col-md-6 col-lg-4 col-xl-3" key={goodsItem.title}>
+                                        <div className="card" data-key="{goodsItem.id}">
+                                            {goodsItem.sale ? <span className="card-sale">🔥 Hot Sale 🔥</span> : null}
+                                            <div className="card-img-wrapper">
+                                                <span className="card-img-top"
+                                                    style={{
+                                                        backgroundImage: `url('${goodsItem.img}')`,
+                                                    }}></span>
+                                            </div>
+                                            <div className="card-body justify-content-between">
+                                                <div className="card-price">{goodsItem.price} ₽</div>
+                                                <h5 className="card-title">{goodsItem.title}</h5>
+                                                <button className="btn btn-primary">В корзину</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                );
+                            })};
                         </div>
                     </div>
                 </div>
             </div>
         </>
-    )
+    );
 }
