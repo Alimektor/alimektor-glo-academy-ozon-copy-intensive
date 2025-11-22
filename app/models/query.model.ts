@@ -1,3 +1,4 @@
 export interface Query {
-    category?: string
+    category?: string,
+    search?: string
 }

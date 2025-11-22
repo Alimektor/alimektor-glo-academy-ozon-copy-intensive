@@ -10,6 +10,11 @@ export const getData = async (query : Query) => {
                 return false;
             }
         }
+        if (query.search) {
+            if (!product.title.toLowerCase().includes(query.search.toLowerCase())) {
+                return false;
+            }
+        }
         return true;
     });
 }

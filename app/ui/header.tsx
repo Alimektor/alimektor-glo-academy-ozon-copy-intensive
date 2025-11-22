@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Filter from './filter'
+import Search from './search'
 
 export default function Header() {
     return (
@@ -12,14 +13,7 @@ export default function Header() {
                                 <Link className='logo' href='/'></Link>
                                 <div className='d-flex control-wrapper'>
                                     <Filter />
-                                    <div className='search'>
-                                        <div className='search-wrapper'>
-                                            <input className='search-wrapper_input' type='text' />
-                                        </div>
-                                        <div className='search-btn'>
-                                            <button></button>
-                                        </div>
-                                    </div>
+                                    <Search />
                                 </div>
                                 <a href='#' id='cart'>
                                     <span className='counter'>0</span>

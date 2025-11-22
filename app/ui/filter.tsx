@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { use, useState } from "react";
+import { useState } from "react";
 
 export default function Filter() {
     const [isOpen, setIsOpen] = useState(false);
