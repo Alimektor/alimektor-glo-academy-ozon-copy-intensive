@@ -1,5 +1,5 @@
 import { getData } from "./actions";
-import { Product } from "./models/product.models";
+import { Product } from "./models/product.model";
 import { Query } from "./models/query.model";
 
 export default async function Home({ searchParams }: { searchParams: Query }) {

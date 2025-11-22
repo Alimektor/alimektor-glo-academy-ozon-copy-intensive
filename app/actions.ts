@@ -1,4 +1,4 @@
-import { Product } from "./models/product.models";
+import { Product } from "./models/product.model";
 import { Query } from "./models/query.model";
 
 export const getData = async (query : Query) => {
