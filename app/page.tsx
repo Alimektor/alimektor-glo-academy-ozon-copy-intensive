@@ -1,11 +1,10 @@
-// import Product from './models/product.module';
-
+import { getData } from "./actions";
 import { Product } from "./models/product.models";
+import { Query } from "./models/query.model";
 
-export default async function Home() {
-    const response = await fetch('https://test-c7ae2-default-rtdb.europe-west1.firebasedatabase.app/goods.json');
-    const data = await response.json();
-    console.log(data);
+export default async function Home({ searchParams }: { searchParams: Query }) {
+    const query = await searchParams;
+    const products = await getData(query);
     return (
         <div className="container">
             <div className="row">
@@ -43,20 +42,20 @@ export default async function Home() {
                 <div className="col-12 col-lg-9 col-xl-10">
                     <div className="container">
                         <div className="row no-gutters goods">
-                            {data.map((goodsItem: Product) => {
+                            {products.map((product: Product) => {
                                 return (
-                                    <div className="col-12 col-md-6 col-lg-4 col-xl-3" key={goodsItem.title}>
-                                        <div className="card" data-key="{goodsItem.id}">
-                                            {goodsItem.sale ? <span className="card-sale">🔥 Hot Sale 🔥</span> : null}
+                                    <div className="col-12 col-md-6 col-lg-4 col-xl-3" key={product.title}>
+                                        <div className="card" data-key="{product.id}">
+                                            {product.sale ? <span className="card-sale">🔥 Hot Sale 🔥</span> : null}
                                             <div className="card-img-wrapper">
                                                 <span className="card-img-top"
                                                     style={{
-                                                        backgroundImage: `url('${goodsItem.img}')`,
+                                                        backgroundImage: `url('${product.img}')`,
                                                     }}></span>
                                             </div>
                                             <div className="card-body justify-content-between">
-                                                <div className="card-price">{goodsItem.price} ₽</div>
-                                                <h5 className="card-title">{goodsItem.title}</h5>
+                                                <div className="card-price">{product.price} ₽</div>
+                                                <h5 className="card-title">{product.title}</h5>
                                                 <button className="btn btn-primary">В корзину</button>
                                             </div>
                                         </div>
